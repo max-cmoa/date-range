@@ -23,4 +23,4 @@
 
  }
 
- add_shortcode('date-range', 'the_actual_code');
+ add_shortcode('date_range', 'the_actual_code');
