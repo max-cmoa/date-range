@@ -10,17 +10,31 @@
  // [date_range startdate="" enddate="" message""]
  function the_actual_code($passedAttributes) {
 
-   // to give in default values if none are passed
+   // to give default values if no attributes are set
    $processedAttributes = shortcode_atts( array(
-		'startdate' => 'default 1',
-		'enddate' => 'default 2',
-    'message' => 'default 3',
+		'startdate' => '2020/01/01',
+		'enddate' => '2020/01/01',
+    'message' => 'message shortcode attribute was not set',
 	), $passedAttributes );
 
-   // must return, using echo will echo the result hidden in the Gutenberg Editor
-   //return 'startdate is: ' . $passedAttributes["startdate"] . ' enddate is: ' . $passedAttributes["enddate"] . ' message is: ' . $passedAttributes["message"];
-   return 'startdate is: ' . $processedAttributes["startdate"] . ' enddate is: ' . $processedAttributes["enddate"] . ' message is: ' . $processedAttributes["message"];
+   $currentDate = date("Y-m-d");
+   $startDate = $processedAttributes["startdate"];
+   $endDate = $processedAttributes["enddate"];
 
- }
+   if( ($currentDate >= $startDate) && ($currentDate <= $endDate)){
+      return $processedAttributes["message"];
+   } else if ($currentDate < $startDate){
+      return 'Before';
+   } else if ($currentDate > $endDate){
+      return 'Over';
+   } else {
+     return 'is error';
+   }
+
+
+   // must use return, using echo will echo the result hidden in the Gutenberg Editor
+   //return 'startdate is: ' . $processedAttributes["startdate"] . ' enddate is: ' . $processedAttributes["enddate"] . ' message is: ' . $processedAttributes["message"] . ' current date is ' . $currentDate;
+
+ } // end of the_actual_code function
 
  add_shortcode('date_range', 'the_actual_code');
