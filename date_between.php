@@ -2,13 +2,16 @@
 /**
  * Plugin Name: Date Between Shortcode
  * Plugin URI: https://github.com/max-cmoa/date-between
- * Description: Shortcode that accepts a start date and and end date and displays a message
+ * Description: Shortcode that accepts a start date and and end date and displays a message if between these dates
  * Version: 1.0
  * Author: Carnegie Museum of Art
  */
 
- // [date_between startdate="" enddate="" message""]
- function the_actual_code($passedAttributes) {
+ // [date_between startdate="" enddate="" ]Some content[/date_between]
+
+ // @param $passedAttributes - attributes passed between [date_between]
+ // @param $content - plain or html betweeen [date_between]content[/date_between]
+ function the_actual_code($passedAttributes, $content) {
 
    // to give default values if no attributes are set
    $processedAttributes = shortcode_atts( array(
@@ -22,11 +25,11 @@
    $endDate = $processedAttributes["enddate"];
 
    if( ($currentDate >= $startDate) && ($currentDate <= $endDate)){
-      return $processedAttributes["message"];
+      return $content;//$processedAttributes["message"];
    } else if ($currentDate < $startDate){
-      return 'Before';
+      return; // 'Before the between date';
    } else if ($currentDate > $endDate){
-      return 'Over';
+      return; // 'Over' the between date;
    } else {
      return 'is error';
    }
