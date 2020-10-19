@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Date Range Shortcode
- * Plugin URI: https://github.com/max-cmoa/date-range
+ * Plugin Name: Date Between Shortcode
+ * Plugin URI: https://github.com/max-cmoa/date-between
  * Description: Shortcode that accepts a start date and and end date and displays a message
  * Version: 1.0
  * Author: Carnegie Museum of Art
