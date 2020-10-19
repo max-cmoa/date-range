@@ -7,7 +7,7 @@
  * Author: Carnegie Museum of Art
  */
 
- // [date_range startdate="" enddate="" message""]
+ // [date_between startdate="" enddate="" message""]
  function the_actual_code($passedAttributes) {
 
    // to give default values if no attributes are set
@@ -37,4 +37,4 @@
 
  } // end of the_actual_code function
 
- add_shortcode('date_range', 'the_actual_code');
+ add_shortcode('date_between', 'the_actual_code');
